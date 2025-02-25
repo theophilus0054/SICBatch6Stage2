@@ -6,15 +6,15 @@ import utime as time
 
 # Connect to Wi-Fi
 # Set According to your Wi-Fi
-ssid = "" 
-password = ""
+ssid = "WISMA BERIMAN 3" 
+password = "ALVIN0713"
 
 # Set According to your Ubidots Token and label
-ubidots_token = ""
-device_label = ""
+ubidots_token = "BBUS-NfprmsxyEjByJaZEOJg9AfekxAkQmX"
+device_label = "esp-32"
 
 # Set According to your Flask Server
-url_flask = ""
+url_flask = "http://192.168.1.74:7000/data"
 
 wifi = network.WLAN(network.STA_IF)
 wifi.active(True)
@@ -37,27 +37,31 @@ sensor = dht.DHT11(Pin(19))
 # Initiate PIR sensor on GPIO5
 pir_sensor = Pin(5, Pin.IN)
 
+# Initiate LDR sensor on GPIO34
+ldr_sensor = ADC(Pin(34))
+ldr_sensor.atten(ADC.ATTN_11DB)
+
 while True:
     try:
         sensor.measure()
         temp = sensor.temperature()
         hum = sensor.humidity()
         motion = 1 if pir_sensor.value() == 1 else 0
+        light = ldr_sensor.read()
         
         data = {
             "temperature": temp,
             "humidity": hum,
             "motion": motion,
+            "light": light,
         }
 
-    # Comment Out Flask Code if you want to use Flask
         # Send data to Flask server
         # Set According to your Flask Server Url
-        # response = request.post(url_flask, json=data)
-        # print(response.text)
-        # response.close()
+        response = request.post(url_flask, json=data)
+        print(response.text)
+        response.close()
         
-    # Comment Ubidots Code if you don't want to use Ubidots
         # Send data to Ubidots
         response2 = request.post(url_ubidots, json=data, headers=headers)
         print(response2.text)
@@ -66,4 +70,4 @@ while True:
     except Exception as e:
         print("Error:", e)
     
-    time.sleep(7)
+    time.sleep(8)
