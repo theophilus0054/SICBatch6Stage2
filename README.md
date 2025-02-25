@@ -48,4 +48,4 @@ To send data to Ubidots, ensure you have completed the following:
         ```
 
 # Note: 
-## Always check the comments in each script file (app.py, tester.py, SendToUbidots.py) to understand the purpose of each line of code and to ensure proper configuration.
+## Always check the comments in each script file (app.py, tester.py) to understand the purpose of each line of code and to ensure proper configuration.
