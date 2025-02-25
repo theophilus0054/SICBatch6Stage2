@@ -44,7 +44,7 @@ To send data to Ubidots, ensure you have completed the following:
     * Replace `<COM?>` with the actual COM port number you identified.
     * Execute the script using `ampy`:
         ```bash
-        ampy --port <COM?> run SendToUbidots.py
+        ampy --port <COM?> run tester.py
         ```
 
 # Note: 
