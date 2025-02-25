@@ -1,0 +1,4 @@
+pymongo
+ampy
+flask
+requests
