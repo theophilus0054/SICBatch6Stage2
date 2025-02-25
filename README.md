@@ -10,7 +10,7 @@ First, install the required Python packages using pip:
 pip install -r requirements.txt
 ```
 
-# 2. Running the Flask Application and Tester
+# 2. Running the Flask Application and Tester (For Flask)
 
 To run the Flask application and the device tester, follow these steps:
 
@@ -47,3 +47,5 @@ To send data to Ubidots, ensure you have completed the following:
         ampy --port <COM?> run SendToUbidots.py
         ```
 
+# Note: 
+## Always check the comments in each script file (app.py, tester.py, SendToUbidots.py) to understand the purpose of each line of code and to ensure proper configuration.
